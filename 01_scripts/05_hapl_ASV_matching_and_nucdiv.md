@@ -105,6 +105,9 @@ p_asv_haplink_split <- ggplot(plot_df,
 
 p_asv_haplink_split
 ```
+
+p_asv_haplink_split corresponds to the figure 1c
+
 ## This second part describes how to estimate nucleotide diversity accountung for ASV count
 
 ```R
