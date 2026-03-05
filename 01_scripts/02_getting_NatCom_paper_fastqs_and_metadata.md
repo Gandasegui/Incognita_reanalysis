@@ -1,6 +1,6 @@
 # Geeting the fastq files form the 687 samples available in SRA archive (code PRJNA1283282)
 
-We will also generate a metadata file from it
+We will also generate a metadata named metadata_fixed.wide.nospace.tsv, which will be used in subsequent scripts
 
 ```bash
 #################################################################
@@ -169,4 +169,3 @@ NR==1 {print "Run","BioSample","geo_loc_name","Sample_Name","FASTQ","country_nor
 cut -f1,2,4,5,6,7 "${OUTDIR}/metadata_fixed.wide.tsv" > "${OUTDIR}/metadata_fixed.wide.nospace.tsv"
 cut -d',' -f1,2,4,5,6,7 "${OUTDIR}/metadata_fixed.csv" > "${OUTDIR}/metadata_fixed.nospace.csv"
 ```
-In this code, we generate metadata_fixed.wide.nospace.tsv, which will be used in late scripts
