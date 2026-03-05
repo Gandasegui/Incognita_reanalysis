@@ -17,6 +17,10 @@ cd 00_ref
 # Source: https://github.com/stephenrdoyle/ancient_trichuris/blob/master/02_data/trichuris_trichiura.fa.gz
 gunzip trichuris_trichiura.fa.gz
 
+#Trichuris_incognita_scaffolded_whole_genome.fasta from https://github.com/max-baer/Trichuris_Incognita/blob/master/Whole%20Genome%20T.%20incognita/Trichuris_incognita_scaffolded_whole_genome.fasta
+wget https://github.com/max-baer/Trichuris_Incognita/blob/master/Whole%20Genome%20T.%20incognita/Trichuris_incognita_scaffolded_whole_genome.fasta
+mv Trichuris_incognita_scaffolded_whole_genome.fasta trichuris_incognita.fa
+
 # Download Trichuris suis genome (not used for amplicons, but available if needed)
 wget https://ftp.ebi.ac.uk/pub/databases/wormbase/parasite/releases/WBPS19/species/trichuris_suis/PRJNA179528/trichuris_suis.PRJNA179528.WBPS19.genomic.fa.gz
 
