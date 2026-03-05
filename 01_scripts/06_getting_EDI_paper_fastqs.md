@@ -1,12 +1,15 @@
 # Geeting the necessary fastq files form the Emerging Infectious Diseases (EDI) paper
 
-The paper by Venkatesan et al. indlude fastqfile form the ITSs as well as from mitochondrial seqence
+The paper by Venkatesan et al. indlude fastq files form the ITSs as well as from mitochondrial sequences
 
 They analyised samples from more than 80 participants
 
-### We need to:
+### We have to:
 - Keep only the fastq files that correspond to ITS-1 and ITS-2 sequences
 - Use the sample ID form the Supplementary Data 6 in Nat Com paper to keep only those fastqs from the same participant 
+
+### This analysis needs:
+- Nautre_paper_metadata.csv; extracted from the Supplementary Data 6 from https://www.nature.com/articles/s41467-025-64516-6
 
 ```bash
 # ===============================
