@@ -97,6 +97,11 @@ p_text_df <- plot_df %>%
 p_text_df$y_pos <- c(15, 75, 75, 75)
 p_text_df$p_label <- str_remove_all(p_text_df$p_label, ' ')
 
+# Harmonising the names
+p_text_df$Country <- str_replace(p_text_df$Country, 'Cote_dIvoire', "Cote d'Ivoire")
+plot_df$Country <- str_replace(plot_df$Country, 'Cote_dIvoire', "Cote d'Ivoire")
+
+# Plotting boxplots
 p_box <- ggplot(na.omit(plot_df), aes(x = depth_group, y = incognita_pct, color = Country)) +
   geom_boxplot(outlier.shape = NA) +
   geom_jitter(width = 0.2, alpha = 0.7) +
@@ -123,7 +128,7 @@ p_box <- ggplot(na.omit(plot_df), aes(x = depth_group, y = incognita_pct, color 
 
 p_box
 
-# Log scatter
+# Plotting log scatter
 p_log <- ggplot(na.omit(plot_df),
                 aes(x = total_trichuris_reads, y = incognita_pct, color = Country)) +
   geom_point(alpha = 0.8) +
