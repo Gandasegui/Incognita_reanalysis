@@ -169,3 +169,4 @@ NR==1 {print "Run","BioSample","geo_loc_name","Sample_Name","FASTQ","country_nor
 cut -f1,2,4,5,6,7 "${OUTDIR}/metadata_fixed.wide.tsv" > "${OUTDIR}/metadata_fixed.wide.nospace.tsv"
 cut -d',' -f1,2,4,5,6,7 "${OUTDIR}/metadata_fixed.csv" > "${OUTDIR}/metadata_fixed.nospace.csv"
 ```
+In this code, we generate metadata_fixed.wide.nospace.tsv, which will be used in late scripts
