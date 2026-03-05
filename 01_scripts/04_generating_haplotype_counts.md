@@ -211,8 +211,12 @@ tail -n +2 06_counts/run_haplotype_counts.tsv | sort -k2,2 > 06_counts/counts.so
 } > 06_counts/run_haplotype_counts.with_species.sorted.tsv
 ```
 
-For the Step seven, the file ASVs_clean.fasta is needed, which is the fasta file with the sequences of the 207 clenaed ASVs
+### For the Step seven, the file ASVs_clean.fasta is needed
+
+This is the fasta file with the sequences of the 207 clenaed ASVs
+
 It is extarcted from the Supplementary Data 3 in https://www.nature.com/articles/s41467-025-64516-6
+
 ```bash
 ####################################
 # Step 7: Assigment ASV - haplotyope at 100% identity
