@@ -134,44 +134,13 @@ while read -r SRA; do
   fasterq-dump -e 8 -O 07_sra_shared40/fastq --split-files "$SRA"
 done < 02_sra_shared40_EDI/sra/sra_files.list
 
-# ===============================
-# 4. Match Sample IDs to FASTQ paths
-# ===============================
-META_TSV="01_raw/runinfo/metadata_fixed.wide.nospace.tsv"
-NATURE_CSV="Nautre_paper_metadata.csv"
-
-awk -F',' 'NR>1{print $2"\t"$3}' "$NATURE_CSV" | sed 's/\r\$//' > nature.PatientID_to_SampleID.tsv
-
-awk 'NR==FNR{keep[$1]=1; next} ($1 in keep)' \
-  shared.patientIDs.txt nature.PatientID_to_SampleID.tsv > shared40.PatientID_to_SampleID.tsv
-
-awk -F'\t' '$1!="BL-B8823"' shared40.PatientID_to_SampleID.tsv > shared39.PatientID_to_SampleID.tsv
-
-awk -F'\t' 'NF>=4{print $3"\t"$4"\t"$1}' "$META_TSV" | sed 's/\r\$//' > nature.SampleID_to_fastq_and_SRR.tsv
-
-awk 'NR==FNR{fq[$1]=$2"\t"$3; next} ($2 in fq){print $1"\t"$2"\t"fq[$2]}' \
-  nature.SampleID_to_fastq_and_SRR.tsv shared39.PatientID_to_SampleID.tsv > shared40.Nature_fastqs.tsv
-
-# ===============================
-# 5. Organize overlapping FASTQ files
-# ===============================
-
-OUTDIR="08_shared40_Nature_fastq"
-mkdir -p "$OUTDIR"
-
-cut -f3 shared40.Nature_fastqs.tsv | while read -r FQ; do
-  if [ -s "$FQ" ]; then
-    cp -v "$FQ" "$OUTDIR"/
-  else
-    echo "MISSING_OR_EMPTY: $FQ" >&2
-  fi
-done
-
-#let's remove the dupiucate:
+# Let's remove the dupiucate:
 cat 01_illumina_PRJNA1131306/PRJNA1131306.ITS1_ITS2.tsv | grep '8823'
 #SRR31228438     BL-B8823        ITS-2   BL-B8823-ITS-2  BL-B8823        Cote_dIvoire
 #SRR31228722     BL-B8823        ITS-1   BL-B8823-ITS-1  BL-B8823        Cote_dIvoire
 rm 02_sra_shared40_EDI/fastq/SRR31228438*
 rm 02_sra_shared40_EDI/fastq/SRR31228722*
 ```
-
+### From this script, a directory the following things should be obtained: 
+- A directory with the fastq files of interest for ASV call using DADA2
+- PRJNA1131306.parsed.tsv; which includes the metadata of interest
