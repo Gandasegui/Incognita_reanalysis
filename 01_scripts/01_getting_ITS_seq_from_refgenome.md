@@ -1,5 +1,3 @@
-
-
 # ITS-1 and ITS-2 amplicon sequences fro the reference genomes
 
 ```bash
