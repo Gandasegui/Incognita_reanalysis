@@ -140,4 +140,5 @@ p_log <- ggplot(na.omit(plot_df),
 p_log
 ```
 p_log corresponds to the Figure 1a
+
 p_box corresponds to the Figure 1b
