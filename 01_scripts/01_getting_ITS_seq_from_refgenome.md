@@ -313,8 +313,7 @@ mkdir -p 00_ref/by_marker
 
 seqkit grep -r -p "ITS1$" 00_ref/trichuris_tri_inc_ITS1_ITS2_refs.labeled.fa \
   > 00_ref/by_marker/trichuris_tri_inc_ITS1_refs.fa
-```
-
 
 seqkit grep -r -p "ITS2$" 00_ref/trichuris_tri_inc_ITS1_ITS2_refs.labeled.fa \
   > 00_ref/by_marker/trichuris_tri_inc_ITS2_refs.fa
+```
