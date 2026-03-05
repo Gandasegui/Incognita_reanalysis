@@ -1,6 +1,6 @@
 # Geeting the fastq files form the 687 samples available in SRA archive (code PRJNA1283282)
 
-### We wil also generate a metadata file from it
+We will also generate a metadata file from it
 
 ```bash
 #################################################################
