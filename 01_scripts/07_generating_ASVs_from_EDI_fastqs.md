@@ -7,6 +7,10 @@ In the paper original paper by Venkatesan, they used fwd and rev reads, but the 
 This is not critinal to species assgiment, consideirn that the ITS sequences differ enought to classifiy the ASV by species.
 However, the ASVs obtained should not be considered as comparable to the original paper.
 
+### This analysis needs:
+- The path to the fastq files comoing form Venkatesan (EDI) paper
+- metadata_EDI.tsv; A three clum tsv with the fastq sra names, marker (ITS-1/2), and country
+
 ```R
 library(tidyverse)
 library(readxl)
@@ -20,7 +24,6 @@ library(dada2)
 setwd("~/R/ITS_trichuris")
 fastq_dir <- "data/fastq_EDI"
 meta_fp   <- "data/metadata/metadata_EDI.tsv"
-# metadata_EDI.tsv is a three clum tsv with the fastq sra names, marker (ITS-1/2), and country
 out_dir   <- "dada2_FWD_only_shared40"
 
 dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
