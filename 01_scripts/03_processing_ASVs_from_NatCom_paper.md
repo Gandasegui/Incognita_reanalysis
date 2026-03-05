@@ -1,7 +1,7 @@
 # Analising the ASVs from the supplementary material provided in the NatCom paper
 
 ### For this analysis the next files are needed:
-- ASVs_clean_samples.csv; adapted form the Supplementary Data 3 in https://www.nature.com/articles/s41467-025-64516-6
+- ASVs_clean_samples.csv; ASV count per sample adapted form the Supplementary Data 3 in https://www.nature.com/articles/s41467-025-64516-6
 - metadata_fixed.wide.nospace.tsv; metadata genereated from SRA archive in the preivous script "02_getting_NatCom_paper_fastqs_and_metadata.md"
 
 ```R
