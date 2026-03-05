@@ -1,5 +1,7 @@
 # Generatign ASVs from fastq files from Emerging Infectious Dieases (EDI) paper
 
+## First, we get the ASVs using DADA2
+
 To do so, we will use only forward reads. 
 In the paper original paper by Venkatesan, they used fwd and rev reads, but the lenght of the PE reads is not enought to generate ASVS
 This is not critinal to species assgiment, consideirn that the ITS sequences differ enought to classifiy the ASV by species.
@@ -78,6 +80,36 @@ meta2 <- meta %>% filter(Run %in% rownames(seqtab.nochim))
 export_marker_simple("ITS-1", meta2, seqtab.nochim, out_dir)
 export_marker_simple("ITS-2", meta2, seqtab.nochim, out_dir)
 ```
-### From this scritp, the following elements should be obtained:
+### From this first part, the following elements should be obtained:
 - The output directory "dada2_FWD_only_shared40", with marker specific subdirectories
 - In each subdirectory, the marker-specific ASV table (ASV_table.tsv) and ASV sequences (ASVs.fasta)
+
+## Second, we classify the ASVs using blastn vs the ITS markers getting for the ref genomes
+
+```bash
+# Moving into the directory
+cd ${WORK_DIR}/ITS_trichuris/03_validation
+mkdir && cd 04_EDI
+module load blast/2.14.1--pl5321h6f7f691_0
+
+# from before (see 04_generating_haplotype_counts.md)
+#makeblastdb -in 00_ref/01_its2/trichuris_tri_inc_ITS2_refs.labeled.fa -dbtype nucl -out 06_counts/db_ITS2refs
+
+# FWD-only ASVs
+
+# BLAST ITS-2 ASVs
+blastn -query 07_EDI/ITS2_FWD_ASV.fasta \
+  -db 06_counts/db_ITS2refs \
+  -task megablast -max_target_seqs 5 \
+  -outfmt '6 qseqid sseqid pident length qlen slen qstart qend sstart send evalue bitscore' \
+  -out 07_EDI/ASV_FWD_vs_ITS2refs.min10.b6
+
+# BLAST ITS-1 ASVs
+blastn -query 07_EDI/ITS1_FWD_ASV.fasta \
+  -db 07_EDI/db_ITS1refs \
+  -task megablast -max_target_seqs 5 \
+  -outfmt '6 qseqid sseqid pident length qlen slen qstart qend sstart send evalue bitscore' \
+  -out 07_EDI/ASV_FWD_vs_ITS1refs.min10.b6
+```
+### Form this second part:
+- ASV_FWD_vs_ITS2refs.min10.b6 and ASV_FWD_vs_ITS1refs.min10.b6 will be used to estimate the % of T. incognita
