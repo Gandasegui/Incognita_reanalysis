@@ -1,12 +1,12 @@
 # Reading ASV and haplotype counts and generating the plot
 
 ### For this code we need:
-- ASV_FWD_vs_ITS1refs.min10.b6 and ASV_FWD_vs_ITS2refs.min10.b6; which species assgimend of EDI ASVs
-- The ASV tables for DADA two obtiane in the previous script
+- ASV_FWD_vs_ITS1refs.min10.b6 and ASV_FWD_vs_ITS2refs.min10.b6; the species assgiment of EDI ASVs
+- The ASV tables for DADA two obtianed in the previous script
 - The metadta of the SRA archive of EDI paper (PRJNA1131306.RunInfo.csv)
 - run_haplotype_counts.with_species.sorted.tsv; the haplotype count obtained in "04_generating_haplotype_counts.md"
 - Nautre_paper_metadata.csv; extracted from the Supplementary Data 6 from https://www.nature.com/articles/s41467-025-64516-6
-- metadata_fixed.wide.nospace.tsv; genertae in "/02_getting_NatCom_paper_fastqs_and_metadata.md"
+- metadata_fixed.wide.nospace.tsv; genertae in "02_getting_NatCom_paper_fastqs_and_metadata.md"
 
 
 ```R
