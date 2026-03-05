@@ -232,7 +232,7 @@ seqkit rmdup -s 07_ASVs/ASVs_clean.fasta -o ASVs_clean.derep.fasta
 #[INFO] 4 duplicated records removed, but let's keep it as originally
 
 ####################################
-# Step 8: Sequencing depth ???
+# Step 8: Sequencing depth - not necessary, buts keep it in the code just in case can be used later
 ####################################
 mkdir -p 08_depth
 # ONT: reads + bases per qc FASTQ
