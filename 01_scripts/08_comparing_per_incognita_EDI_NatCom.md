@@ -128,7 +128,8 @@ nat_asv <- asv_long %>%
 nat_edi <- nat_ref %>%
   left_join(edi_ref, by = c("Participant_ID" = "host_subject_id")) %>%
   left_join(nat_asv, by = "Participant_ID") %>%
-  drop_na(incognita_pct_edi, incognita_pct_asv, incognita_pct_nat)
+  drop_na(incognita_pct_edi, incognita_pct_asv, incognita_pct_nat) %>%
+  filter(Sample_No != 'S_C074') #Remove other duplicate
 
 # p1: ITS-1 vs ITS-2 from EDI
 p1 <- nat_edi %>%
