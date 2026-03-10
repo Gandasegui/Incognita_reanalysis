@@ -399,3 +399,4 @@ plot_nucleotide_diversity <- function(combined_file = "combined_nucleotide_diver
 
 plot_nucleotide_diversity()
 ```
+plot_nucleotide_diversity() generates the Fig 1d
